@@ -1,0 +1,33 @@
+<app-header></app-header>
+<div class="center-container">
+  <mat-card style="text-align: center">
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-content>
+
+      <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Usuário"
+                 [(ngModel)]="usuario.usuario" name="usuario">
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <input type="password" matInput placeholder="Senha"
+                 [(ngModel)]="usuario.senha" name="senha">
+        </mat-form-field>
+      </p>
+
+      <!--      <p *ngIf="error" class="error">-->
+      <!--        {{ error }}-->
+      <!--      </p>-->
+
+      <div class="button" style="text-align: left">
+        <button type="submit" mat-button (click)=logar()>Login</button>
+        <button type="submit" mat-button (click)=registrar()>Registrar</button>
+      </div>
+
+
+    </mat-card-content>
+  </mat-card>
+</div>

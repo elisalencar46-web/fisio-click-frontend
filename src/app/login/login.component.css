@@ -1,0 +1,7 @@
+.center-container {
+  height: 70vh; /* Or a specific height for the container */
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+
+}

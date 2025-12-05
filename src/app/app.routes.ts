@@ -1,8 +1,6 @@
 import {Routes} from '@angular/router';
 import {LoginComponent} from "./login/login.component";
 import {HomeComponent} from "./home/home.component";
-import {FisioterapeutaCadastroComponent} from "./fisioterapeuta/fisioterapeuta-cadastro/fisioterapeuta-cadastro.component";
-import {PacienteCadastrarComponent} from "./paciente/paciente-cadastrar/paciente-cadastrar.component";
 import {CadastroComponent} from "./cadastro/cadastro.component";
 import {AgendamentoPacienteComponent} from "./agendamento/agendamento-paciente/agendamento-paciente.component";
 import {AgendamentoFisioterapeutaComponent} from "./agendamento/agendamento-fisioterapeuta/agendamento-fisioterapeuta.component";
@@ -25,16 +23,8 @@ export const routes: Routes = [
     component: HomeComponent,
     children: [
       {
-        path: 'fisioterapeuta-cadastrar',
-        component: FisioterapeutaCadastroComponent,
-      },
-      {
         path: 'agendamento-paciente',
         component: AgendamentoPacienteComponent,
-      },
-      {
-        path: 'paciente-cadastrar',
-        component: PacienteCadastrarComponent,
       },
       {
         path: 'agendamento-fisioterapeuta',

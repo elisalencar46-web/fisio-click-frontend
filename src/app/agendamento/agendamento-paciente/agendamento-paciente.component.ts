@@ -91,7 +91,9 @@ export class AgendamentoPacienteComponent implements OnInit{
 
   agendar(requestAgendamento: RequestAgendamentoDto) {
     this.agendamentoService.agendar(requestAgendamento).subscribe(data => {
-      console.log(data)
+      if(data) {
+        this.agendamentosPaciente(requestAgendamento.idUsuario);
+      }
     })
 
   }

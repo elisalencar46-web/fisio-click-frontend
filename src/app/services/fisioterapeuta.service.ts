@@ -10,22 +10,20 @@ import {FisioterapeutaDto} from "../fisioterapeuta/fisioterapeuta-cadastro/fisio
 export class FisioterapeutaService {
 
   public url: string;
-  public uri: string;
   http = inject(HttpClient);
 
   constructor() {
-    this.url = "http://localhost:8080";
-    this.uri = "fisioterapeuta";
+    this.url = "http://localhost:8080/fisioterapeuta";
   }
 
   salvar(fisioterapeuta: FisioterapeutaDto): Observable<ResponseDTO> {
-    const endpoint = `${this.uri}/salvar`
-    return this.http.post<ResponseDTO>(`${this.url}/${endpoint}`, fisioterapeuta);
+    const endpoint = "/salvar"
+    return this.http.post<ResponseDTO>( this.url.concat(endpoint), fisioterapeuta);
   }
 
   buscar(): Observable<FisioterapeutaDto[]> {
-    const endpoint = `${this.uri}/buscar`
-    return this.http.get<FisioterapeutaDto[]>(`${this.url}/${endpoint}`);
+    const endpoint = "/buscar"
+    return this.http.get<FisioterapeutaDto[]>(this.url.concat(endpoint));
   }
 
 

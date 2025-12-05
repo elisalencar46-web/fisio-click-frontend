@@ -10,17 +10,15 @@ import {ResponseDTO} from "../shared/response-dto";
 export class LoginService {
 
   public url: string;
-  public uri: string;
   http = inject(HttpClient);
 
   constructor() {
-    this.url = "http://localhost:8080";
-    this.uri = "login";
+    this.url = "http://localhost:8080/login";
   }
 
   logar(usuario: Usuario): Observable<ResponseDTO> {
-    const endpoint = `${this.uri}/logar`
-    return this.http.post<ResponseDTO>(`${this.url}/${endpoint}`, usuario);
+    const endpoint = "/logar";
+    return this.http.post<ResponseDTO>(this.url.concat(endpoint), usuario);
   }
 
 

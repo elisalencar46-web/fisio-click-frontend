@@ -10,17 +10,15 @@ import {PacienteDTO} from "../paciente/paciente-dto";
 export class PacienteService {
 
   public url: string;
-  public uri: string;
   http = inject(HttpClient);
 
   constructor() {
-    this.url = "http://localhost:8080";
-    this.uri = "paciente";
+    this.url = "http://localhost:8080/paciente";
   }
 
   salvar(paciente: PacienteDTO): Observable<ResponseDTO> {
-    const endpoint = `${this.uri}/salvar`
-    return this.http.post<ResponseDTO>(`${this.url}/${endpoint}`, paciente);
+    const endpoint = "/salvar";
+    return this.http.post<ResponseDTO>(this.url.concat(endpoint), paciente);
   }
 
 

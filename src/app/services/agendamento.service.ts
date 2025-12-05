@@ -10,32 +10,30 @@ import {ResponseAgendamentoDto} from "../shared/response-agendamento-dto";
 export class AgendamentoService {
 
   public url: string;
-  public uri: string;
   http = inject(HttpClient);
 
   constructor() {
-    this.url = "http://localhost:8080";
-    this.uri = "agendamento";
+    this.url = "http://localhost:8080/agendamento";
   }
 
   buscarAgendaFisioterapeuta(idFisio: string): Observable<Array<ResponseAgendamentoDto>> {
-    const endpoint = `${this.uri}/agenda-fisioterapeuta`
-    return this.http.get<Array<ResponseAgendamentoDto>>(`${this.url}/${endpoint}/${idFisio}`);
+    const endpoint = "/agenda-fisioterapeuta/".concat(idFisio)
+    return this.http.get<Array<ResponseAgendamentoDto>>(this.url.concat(endpoint));
   }
 
   agendar(requestAgendamento: RequestAgendamentoDto): Observable<boolean> {
-    const endpoint = `${this.uri}/agendar`
-    return this.http.post<boolean>(`${this.url}/${endpoint}`, requestAgendamento);
+    const endpoint = "/agendar"
+    return this.http.post<boolean>(this.url.concat(endpoint), requestAgendamento);
   }
 
   agendaPaciente(idUsuario: string): Observable<Array<ResponseAgendamentoDto>> {
-    const endpoint = `${this.uri}/agenda-paciente`
-    return this.http.get<Array<ResponseAgendamentoDto>>(`${this.url}/${endpoint}/${idUsuario}`);
+    const endpoint = "/agenda-paciente/".concat(idUsuario)
+    return this.http.get<Array<ResponseAgendamentoDto>>(this.url.concat(endpoint));
   }
 
   cancelarAgendamento(idAgendamento: string): Observable<boolean> {
-    const endpoint = `${this.uri}/cancelar`
-    return this.http.get<boolean>(`${this.url}/${endpoint}/${idAgendamento}`);
+    const endpoint = "/cancelar/".concat(idAgendamento)
+    return this.http.get<boolean>(this.url.concat(endpoint));
   }
 
 

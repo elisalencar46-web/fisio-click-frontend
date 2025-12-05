@@ -1,9 +1,11 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router';
 import {LoginComponent} from "./login/login.component";
 import {HomeComponent} from "./home/home.component";
 import {FisioterapeutaCadastroComponent} from "./fisioterapeuta/fisioterapeuta-cadastro/fisioterapeuta-cadastro.component";
-import {FisioterapeutaListagemComponent} from "./fisioterapeuta/fisioterapeuta-listagem/fisioterapeuta-listagem.component";
-import {AgendamentoListagemComponent} from "./agendamento/agendamento-listagem/agendamento-listagem.component";
+import {PacienteCadastrarComponent} from "./paciente/paciente-cadastrar/paciente-cadastrar.component";
+import {CadastroComponent} from "./cadastro/cadastro.component";
+import {AgendamentoPacienteComponent} from "./agendamento/agendamento-paciente/agendamento-paciente.component";
+import {AgendamentoFisioterapeutaComponent} from "./agendamento/agendamento-fisioterapeuta/agendamento-fisioterapeuta.component";
 
 export const routes: Routes = [
   {path: '',
@@ -15,6 +17,10 @@ export const routes: Routes = [
     component: LoginComponent
   },
   {
+    path:'cadastrar',
+    component: CadastroComponent
+  },
+  {
     path:'home',
     component: HomeComponent,
     children: [
@@ -23,12 +29,16 @@ export const routes: Routes = [
         component: FisioterapeutaCadastroComponent,
       },
       {
-        path: 'fisioterapeuta-listagem',
-        component: FisioterapeutaListagemComponent,
+        path: 'agendamento-paciente',
+        component: AgendamentoPacienteComponent,
       },
       {
-        path: 'agendamento-listagem',
-        component: AgendamentoListagemComponent,
+        path: 'paciente-cadastrar',
+        component: PacienteCadastrarComponent,
+      },
+      {
+        path: 'agendamento-fisioterapeuta',
+        component: AgendamentoFisioterapeutaComponent,
       }
     ]
 

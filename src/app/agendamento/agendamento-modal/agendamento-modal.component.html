@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Agendamento</h2>
+<mat-dialog-content class="horizontal-form-fields">
+  <mat-form-field>
+    <mat-label>Fisioterapeuta</mat-label>
+    <mat-select [(ngModel)]="fisioterapeutaComboSelecionado" >
+      <mat-option>Nenhum</mat-option>
+      <mat-option *ngFor="let option of fisioterapeutaCombo" [value]="option">
+        {{ option.nome }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Escolha uma data</mat-label>
+    <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" (dateChange)="dataSelecionada($event)">
+    <mat-hint>DD/MM/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Horário</mat-label>
+    <mat-select [(ngModel)]="horaSelecionada" >
+      <mat-option>Nenhum</mat-option>
+      <mat-option *ngFor="let option of horas" [value]="option">
+        {{ option.descricao }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial (click)="agendar()">Agendar</button>
+</mat-dialog-actions>

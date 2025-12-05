@@ -1,33 +1,31 @@
 <app-header></app-header>
 <div class="center-container">
-  <mat-card style="text-align: center">
-    <mat-card-title>Login</mat-card-title>
-    <mat-card-content>
+<mat-card>
+  <mat-card-content>
+      <h2>Login</h2>
 
-      <p>
-        <mat-form-field>
-          <input type="text" matInput placeholder="Usuário"
-                 [(ngModel)]="usuario.usuario" name="usuario">
-        </mat-form-field>
-      </p>
+    <mat-radio-group [(ngModel)]="radioButtonTipoUsuario" aria-label="Select an option">
+      <mat-radio-button value="P" class="my-custom-radio">Paciente</mat-radio-button>
+      <mat-radio-button value="F" class="my-custom-radio">Fisioterapeuta</mat-radio-button>
+    </mat-radio-group>
 
-      <p>
-        <mat-form-field>
-          <input type="password" matInput placeholder="Senha"
-                 [(ngModel)]="usuario.senha" name="senha">
-        </mat-form-field>
-      </p>
+    <mat-form-field>
+        <input matInput placeholder="CPF" [(ngModel)]="usuario.cpf" name="cpf">
 
-      <!--      <p *ngIf="error" class="error">-->
-      <!--        {{ error }}-->
-      <!--      </p>-->
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Senha" [(ngModel)]="usuario.senha"
+               name="senha">
 
-      <div class="button" style="text-align: left">
-        <button type="submit" mat-button (click)=logar()>Login</button>
-        <button type="submit" mat-button (click)=registrar()>Registrar</button>
-      </div>
+      </mat-form-field>
+          <p *ngIf="erro" class="error">
+            Usuário e/ou senha inválida.
+          </p>
 
-
-    </mat-card-content>
-  </mat-card>
+      <button mat-raised-button style="background: cornflowerblue; margin-right: 15px"
+              (click)=logar()>Login</button>
+      <button mat-raised-button style="background: cornflowerblue"
+              (click)=registrar()>Registrar</button>
+  </mat-card-content>
+</mat-card>
 </div>

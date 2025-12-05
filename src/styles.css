@@ -3,7 +3,6 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .container {
-  /*display: flex;*/
   justify-items: center;
   width: 100%;
 }
@@ -16,3 +15,26 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background: cornflowerblue !important;
   color: black !important;
 }
+
+.table-listagem {
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.header-tabela {
+  background-color: cornflowerblue !important;
+}
+
+.mat-mdc-table {
+  background-color: cadetblue !important;
+}
+
+.mat-table {
+  border-radius: 8px; /* Adjust the value as needed */
+  overflow: hidden;
+}
+
+.mat-mdc-card {
+  background-color: white !important;
+}
+

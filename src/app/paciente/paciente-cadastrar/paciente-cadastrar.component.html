@@ -1,23 +1,23 @@
-<div class="center-container" *ngIf="tipoUsuario === 'F'">
+<div class="center-container" *ngIf=" tipoUsuario === 'P'">
   <mat-card>
     <mat-card-content>
-      <h2>Fisioterapeuta</h2>
+      <h2>Paciente</h2>
 
       <mat-form-field>
-        <input matInput placeholder="Nome" [(ngModel)]="fisioterapeuta.nome" name="nome">
-
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Inscricao" [(ngModel)]="fisioterapeuta.inscricao"
-               name="inscricao">
+        <input matInput placeholder="Nome" [(ngModel)]="paciente.nome" name="nome">
 
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="CPF" [(ngModel)]="fisioterapeuta.usuarioDTO.cpf" name="cpf">
+        <input matInput placeholder="Idade" [(ngModel)]="paciente.idade"
+               name="idade">
 
       </mat-form-field>
       <mat-form-field>
-        <input matInput type="password" placeholder="Senha" [(ngModel)]="fisioterapeuta.usuarioDTO.senha"
+        <input matInput placeholder="CPF" [(ngModel)]="paciente.usuarioDTO.cpf" name="cpf">
+
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Senha" [(ngModel)]="paciente.usuarioDTO.senha"
                name="senha">
 
       </mat-form-field>

@@ -1,4 +1,7 @@
 export interface Usuario {
-  usuario: string;
+  id:string;
+  cpf: string;
   senha: string;
+  tipoUsuario: string;
+  autenticado: boolean;
 }

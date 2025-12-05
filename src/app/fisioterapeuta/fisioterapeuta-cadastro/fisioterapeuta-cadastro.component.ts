@@ -1,24 +1,32 @@
-import {Component, OnInit} from '@angular/core';
-import {Fisioterapeuta} from "./fisioterapeuta";
-import {HeaderComponent} from "../../shared/header/header.component";
-import {MatCardModule} from "@angular/material/card";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {FormsModule} from "@angular/forms";
-import {MatInputModule} from "@angular/material/input";
-import {MatButtonModule} from "@angular/material/button";
-import {HomeComponent} from "../../home/home.component";
+import {Component, inject, Input, OnInit} from '@angular/core';
+import {FisioterapeutaDto} from "./fisioterapeuta-dto";
+import {MaterialModule} from "../../material.module";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Usuario} from "../../login/usuario";
+import {ResponseDTO} from "../../shared/response-dto";
+import {FisioterapeutaService} from "../../services/fisioterapeuta.service";
+import {HttpClientModule} from "@angular/common/http";
 
 @Component({
   selector: 'app-fisioterapeuta-cadastro',
   standalone: true,
-  imports: [MatCardModule,MatInputModule,
-    MatButtonModule, HeaderComponent, FormsModule],
+  imports: [MaterialModule, HttpClientModule],
   templateUrl: './fisioterapeuta-cadastro.component.html',
-  styleUrl: './fisioterapeuta-cadastro.component.css'
+  styleUrl: './fisioterapeuta-cadastro.component.css',
+  providers: [FisioterapeutaService]
 })
 export class FisioterapeutaCadastroComponent implements OnInit {
 
-  fisioterapeuta: Fisioterapeuta = new Fisioterapeuta();
+  router = inject(Router)
+  route = inject(ActivatedRoute)
+  service = inject(FisioterapeutaService);
+  fisioterapeuta: FisioterapeutaDto = this.criarFisioterapeuta('','','',
+    this.criarUsuario('','','','F',false));
+
+  @Input() tipoUsuario: string = '';
+
+  erro: boolean;
+  messagemErro: string;
 
   constructor() {
 
@@ -27,7 +35,51 @@ export class FisioterapeutaCadastroComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  cadastrar() {
-    console.log("salvo");
+  salvar() {
+
+    let fisioterapeuta = this.criarFisioterapeuta('', this.fisioterapeuta.nome, this.fisioterapeuta.inscricao, this.fisioterapeuta.usuarioDTO);
+
+    let response: ResponseDTO;
+
+    this.service.salvar(fisioterapeuta).subscribe(data => {
+      response = data;
+
+      if(response.status == "200") {
+        console.log(data);
+        this.voltar();
+      }else {
+        this.erro = true;
+        this.messagemErro = response.mensagem;
+      }
+
+    });
+
+  }
+
+
+
+  criarFisioterapeuta(id: string, nome: string, inscricao: string, usuario: Usuario) {
+    return {
+      id: id,
+      inscricao: inscricao,
+      nome: nome,
+      usuarioDTO: usuario
+    };
+  }
+
+  criarUsuario(id: string, cpf: string, senha:string, tipoUsuario: string, autenticado: boolean) {
+    return {
+      id: id,
+      cpf: cpf,
+      senha: senha,
+      tipoUsuario: tipoUsuario,
+      autenticado: autenticado
+    };
+  }
+
+  voltar() {
+    this.router.navigate(['../login'], {
+      relativeTo: this.route
+    });
   }
 }

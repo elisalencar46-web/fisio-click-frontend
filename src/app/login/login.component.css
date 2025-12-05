@@ -1,7 +1,38 @@
 .center-container {
-  height: 70vh; /* Or a specific height for the container */
-  display: flex;
-  justify-content: center; /* Centers horizontally */
-  align-items: center; /* Centers vertically */
+  height: 70vh;
+  justify-content: center;
+  align-items: center;
 
+}
+
+.error {
+  color: red;
+}
+
+mat-card {
+  max-width: 400px;
+  margin: 2em auto;
+  text-align: center;
+}
+
+mat-form-field {
+  display: block;
+}
+
+.espaco {
+  flex: 1 1 auto;
+}
+
+:host ::ng-deep .mat-radio-label {
+  font-weight: bold;
+  color: #3f51b5 !important;
+}
+
+:host ::ng-deep .mdc-form-field {
+  color: black;
+  font: 500 17px/32px Roboto, sans-serif;
+}
+
+.my-custom-radio {
+  --mdc-radio-unselected-icon-color: #b0bec5;
 }
